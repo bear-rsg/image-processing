@@ -289,7 +289,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Connected Component Analysis</h1>
-        <p>Last updated on 2023-12-18 |
+        <p>Last updated on 2024-01-03 |
         
         <a href="https://github.com/datacarpentry/image-processing/edit/main/episodes/08-connected-components.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -637,7 +637,7 @@ display the labeled image like so:</p>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.imshow(labeled_image)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span></code></pre>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span></code></pre>
 </div>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -647,7 +647,8 @@ display the labeled image like so:</p>
 </button>
 <div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
-<p>If you are using an old version of Matplotlib you might get a warning
+<p>If you are using an older version of Matplotlib you might get a
+warning
 <code>UserWarning: Low image data range; displaying image with stretched contrast.</code>
 or just see a visually empty image.</p>
 <p>What went wrong? When you hover over the image, the pixel values are
@@ -695,6 +696,21 @@ the image to RGB and then display it.</p>
 </div>
 </div>
 </div>
+<div id="suppressing-outputs-in-jupyter-notebooks" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="suppressing-outputs-in-jupyter-notebooks" class="callout-inner">
+<h3 class="callout-title">Suppressing outputs in Jupyter Notebooks<a class="anchor" aria-label="anchor" href="#suppressing-outputs-in-jupyter-notebooks"></a>
+</h3>
+<div class="callout-content">
+<p>We just used <code>plt.axis("off");</code> to hide the axis from the
+image for a visually cleaner figure. The semicolon is added to supress
+the output(s) of the statement, in this <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html" class="external-link">case</a>
+the axis limits. This is specific to Jupyter Notebooks.</p>
+</div>
+</div>
+</div>
 <p>We can use the function <code>ski.color.label2rgb()</code> to convert
 the 32-bit grayscale labeled image to standard RGB colour (recall that
 we already used the <code>ski.color.rgb2gray()</code> function to
@@ -710,7 +726,7 @@ image:</p>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(colored_label_image)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span></code></pre>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span></code></pre>
 </div>
 <figure><img src="../fig/shapes-01-labeled.png" alt="Labeled objects" class="figure mx-auto d-block"></figure><div id="how-many-objects-are-in-that-image-15-min" class="callout challenge">
 <div class="callout-square">
@@ -738,7 +754,7 @@ values influence the result?</p>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>As you might have guessed, the return value <code>count</code>
-already contains the number of found objects in the image. So it can
+already contains the number of objects found in the image. So it can
 simply be printed with</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1065,7 +1081,7 @@ display the resulting labeled image:</p>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>plt.imshow(colored_label_image)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Found"</span>, count, <span class="st">"objects in the image."</span>)</span></code></pre>
 </div>
@@ -1124,14 +1140,14 @@ values in <code>labeled_image</code>.</p>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> plt.imshow(colored_area_image)</span>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>cbar <span class="op">=</span> fig.colorbar(im, ax<span class="op">=</span>ax, shrink<span class="op">=</span><span class="fl">0.85</span>)</span>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>cbar.ax.set_title(<span class="st">"Area"</span>)</span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span></code></pre>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span></code></pre>
 </div>
-<figure><img src="../fig/shapes-01-objects-coloured-by-area.png" alt="Objects colored by area" class="figure mx-auto d-block"></figure><div id="callout4" class="callout callout">
+<figure><img src="../fig/shapes-01-objects-coloured-by-area.png" alt="Objects colored by area" class="figure mx-auto d-block"></figure><div id="callout5" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout5"></a>
 </h3>
 <div class="callout-content">
 <p>You may have noticed that in the solution, we have used the
@@ -1232,8 +1248,8 @@ label.</li>
   "url": "https://datacarpentry.github.io/image-processing/instructor/08-connected-components.html",
   "identifier": "https://datacarpentry.github.io/image-processing/instructor/08-connected-components.html",
   "dateCreated": "2017-03-14",
-  "dateModified": "2023-12-18",
-  "datePublished": "2024-01-02"
+  "dateModified": "2024-01-03",
+  "datePublished": "2024-01-03"
 }
 
   </script><script>

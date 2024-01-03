@@ -299,7 +299,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Image Basics</h1>
-        <p>Last updated on 2023-12-18 |
+        <p>Last updated on 2024-01-03 |
         
         <a href="https://github.com/datacarpentry/image-processing/edit/main/episodes/02-image-basics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -516,7 +516,7 @@ modules. You will encounter several different forms of
   <h3 class="accordion-header" id="headingSpoiler1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Further explanation</h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>In the example above, form 1 loads the entire scikit-image library
 into the program as an object. Individual modules of the library are
@@ -689,7 +689,7 @@ image and print out the matrix as well.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>There are many possible solutions, but one method would be . . .</p>
 <div class="codewrapper sourceCode" id="cb12">
@@ -920,7 +920,7 @@ further.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>(255, 0, 0) represents red, because the red channel is maximised,
 while the other two channels have the minimum values.</li>
@@ -966,7 +966,7 @@ RGB model?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>There are 24 total bits in an RGB colour of this type, and each bit
 can be on or off, and so there are 2<sup>24</sup> = 16,777,216 possible
@@ -1114,7 +1114,7 @@ how much storage would be required for the file?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>In such an image, there are 5,000 × 5,000 = 25,000,000 pixels, and 24
 bits for each pixel, leading to 25,000,000 × 24 = 600,000,000 bits, or
@@ -1217,7 +1217,7 @@ prediction? How about the JPEG?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The BMP file, <code>ws.bmp</code>, is 75,000,054 bytes, which matches
 our prediction very nicely. The JPEG file, <code>ws.jpg</code>, is
@@ -1237,22 +1237,24 @@ version.</p>
 </h3>
 <div class="callout-content">
 <p>Let us see a hands-on example of lossless versus lossy compression.
-Once again, open a terminal and navigate to the <code>data/</code>
-directory. The two output images, <code>ws.bmp</code> and
-<code>ws.jpg</code>, should still be in the directory, along with
+Open a terminal (or Windows PowerShell) and navigate to the
+<code>data/</code> directory. The two output images, <code>ws.bmp</code>
+and <code>ws.jpg</code>, should still be in the directory, along with
 another image, <code>tree.jpg</code>.</p>
 <p>We can apply lossless compression to any file by using the
 <code>zip</code> command. Recall that the <code>ws.bmp</code> file
 contains 75,000,054 bytes. Apply lossless compression to this image by
-executing the following command: <code>zip ws.zip ws.bmp</code>. This
+executing the following command: <code>zip ws.zip ws.bmp</code>
+(<code>Compress-Archive ws.bmp ws.zip</code> with PowerShell). This
 command tells the computer to create a new compressed file,
 <code>ws.zip</code>, from the original bitmap image. Execute a similar
-command on the tree JPEG file: <code>zip tree.zip tree.jpg</code>.</p>
-<p>Having created the compressed file, use the <code>ls -al</code>
-command to display the contents of the directory. How big are the
-compressed files? How do those compare to the size of
-<code>ws.bmp</code> and <code>tree.jpg</code>? What can you conclude
-from the relative sizes?</p>
+command on the tree JPEG file: <code>zip tree.zip tree.jpg</code>
+(<code>Compress-Archive tree.jpg tree.zip</code> with PowerShell).</p>
+<p>Having created the compressed file, use the <code>ls -l</code>
+command (<code>dir</code> with PowerShell) to display the contents of
+the directory. How big are the compressed files? How do those compare to
+the size of <code>ws.bmp</code> and <code>tree.jpg</code>? What can you
+conclude from the relative sizes?</p>
 </div>
 </div>
 </div>
@@ -1261,7 +1263,7 @@ from the relative sizes?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Here is a partial directory listing, showing the sizes of the
 relevant files there:</p>
@@ -1516,8 +1518,8 @@ information may be stored in an image file, in the image metadata.</li>
   "url": "https://datacarpentry.github.io/image-processing/02-image-basics.html",
   "identifier": "https://datacarpentry.github.io/image-processing/02-image-basics.html",
   "dateCreated": "2017-03-14",
-  "dateModified": "2023-12-18",
-  "datePublished": "2024-01-02"
+  "dateModified": "2024-01-03",
+  "datePublished": "2024-01-03"
 }
 
   </script><script>
