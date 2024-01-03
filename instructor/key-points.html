@@ -283,6 +283,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="10-multi-dimensional-data.html">10. Multi-dimensional data</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -462,6 +474,21 @@ label.</li>
 can automatically segment images of bacterial colonies.</li>
 <li>These methods are useful for many scientific problems, especially
 those involving morphometrics.</li>
+</ul></section><section id="10-multi-dimensional-data"><h2 class="section-heading"><a href="10-multi-dimensional-data.html">Multi-dimensional data</a></h2>
+<hr class="half-width">
+<ul>
+<li>We open access the Napari n-dimensional image viewer with
+<code>Napari.Viewer</code> objects.</li>
+<li>
+<code>Image</code> and <code>Label</code> layers can be added to a
+viewer with <code>Napari.Viewer.add_image</code> and
+<code>Napari.Viewer.add_label</code> respectively.</li>
+<li>Many scikit-image functions such as
+<code>skimage.filters.gaussian</code>,
+<code>ski.threshold.threshold_otsu</code>,
+<code>ski.measure.label</code> and <code>ski.measure.regionprops</code>
+work with 3D image data.</li>
+<li>Iterate through time-points to analyse time-lapse movies.</li>
 </ul></section>
 </div>
     </main>
