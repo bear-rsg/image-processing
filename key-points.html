@@ -285,7 +285,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="10-multi-dimensional-data.html">10. Multi-dimensional data</a>
+        <a href="10-multidimensional-data.html">10. Multidimensional data</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -472,21 +472,21 @@ label.</li>
 can automatically segment images of bacterial colonies.</li>
 <li>These methods are useful for many scientific problems, especially
 those involving morphometrics.</li>
-</ul></section><section id="10-multi-dimensional-data"><h2 class="section-heading"><a href="10-multi-dimensional-data.html">Multi-dimensional data</a></h2>
+</ul></section><section id="10-multidimensional-data"><h2 class="section-heading"><a href="10-multidimensional-data.html">Multidimensional data</a></h2>
 <hr class="half-width">
 <ul>
-<li>We open access the Napari n-dimensional image viewer with
-<code>Napari.Viewer</code> objects.</li>
+<li>We can access open a Napari n-dimensional image viewer with
+<code>viewer = napari.Viewer()</code>.</li>
 <li>
-<code>Image</code> and <code>Label</code> layers can be added to a
-viewer with <code>Napari.Viewer.add_image</code> and
-<code>Napari.Viewer.add_label</code> respectively.</li>
+<code>Image</code> and <code>Label</code> Layers can be added to a
+viewer with <code>viewer.add_image()</code> and
+<code>viewer.add_labels()</code> respectively.</li>
 <li>Many scikit-image functions such as
-<code>skimage.filters.gaussian</code>,
-<code>ski.threshold.threshold_otsu</code>,
-<code>ski.measure.label</code> and <code>ski.measure.regionprops</code>
-work with 3D image data.</li>
-<li>Iterate through time-points to analyse time-lapse movies.</li>
+<code>ski.filters.gaussian()</code>,
+<code>ski.threshold.threshold_otsu()</code>,
+<code>ski.measure.label()</code> and
+<code>ski.measure.regionprops()</code> work with 3D image data.</li>
+<li>We can iterate through time-points to analyse timelapse movies.</li>
 </ul></section>
 </div>
     </main>
@@ -535,8 +535,8 @@ work with 3D image data.</li>
   "url": "https://datacarpentry.github.io/image-processing/key-points.html",
   "identifier": "https://datacarpentry.github.io/image-processing/key-points.html",
   "dateCreated": "2017-03-14",
-  "dateModified": "2024-01-23",
-  "datePublished": "2024-01-23"
+  "dateModified": "2024-01-26",
+  "datePublished": "2024-01-26"
 }
 
   </script><script>
