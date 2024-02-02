@@ -449,52 +449,13 @@ conda install -c conda-forge scikit-image ipympl napari pyqt jupyterlab</code></
   <h3 class="accordion-header" id="headingSpoiler1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Instructions for Windows</h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>Launch the Anaconda Prompt program and run your commands within this.
 (Running conda commands on the standard Command Prompt will return an
 error:
 <code>'conda' is not recognized as an internal or external command, operable program or batch file.</code>)</p>
 </div>
-</div>
-</div>
-</div>
-<div id="callout1" class="callout callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<div class="callout-inner">
-<h3 class="callout-title">Enabling the<code>ipympl</code>backend in
-Jupyter notebooks<a class="anchor" aria-label="anchor" href="#callout1"></a>
-</h3>
-<div class="callout-content">
-<p>This lesson uses Matplotlib features to display images, and some
-interactive features will be valuable. To enable the interactive tools
-in JupyterLab, the <code>ipympl</code> package is required.The
-<code>ipympl</code> backend can be enabled with the
-<code>%matplotlib</code> Jupyter magic. Put the following command in a
-cell in your notebooks (e.g., at the top) and execute the cell before
-any plotting commands.</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="callout2" class="callout callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<div class="callout-inner">
-<h3 class="callout-title">Older
-JupyterLab versions<a class="anchor" aria-label="anchor" href="#callout2"></a>
-</h3>
-<div class="callout-content">
-<p>If you are using an older version of JupyterLab, you may also need to
-install the labextensions manually, as explained in the <a href="https://github.com/matplotlib/ipympl#readme" class="external-link">README file</a> for
-the <code>ipympl</code> package.</p>
 </div>
 </div>
 </div>
@@ -512,30 +473,30 @@ Python 3 notebook.</p>
 <li>
 <p>To test your environment, run the following lines in a cell of
 the notebook:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> skimage <span class="im">as</span> ski</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> napari</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># load an image</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">'data/colonies-01.tif'</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate it by 45 degrees</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>rotated <span class="op">=</span> ski.transform.rotate(image<span class="op">=</span>image, angle<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># display the original image and its rotated version side by side</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(image)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(rotated)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># open the image in Napari</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>viewer <span class="op">=</span> napari.Viewer()</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>image, name<span class="op">=</span><span class="st">"colonies_01"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> skimage <span class="im">as</span> ski</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> napari</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># load an image</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">'data/colonies-01.tif'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate it by 45 degrees</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>rotated <span class="op">=</span> ski.transform.rotate(image<span class="op">=</span>image, angle<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># display the original image and its rotated version side by side</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(image)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(rotated)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># open the image in Napari</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>viewer <span class="op">=</span> napari.Viewer()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>image, name<span class="op">=</span><span class="st">"colonies_01"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 <p>Upon execution of the cell, a figure with two images should be
 displayed in an interactive widget. When hovering over the images with
@@ -548,7 +509,7 @@ within it.</p>
   <h3 class="accordion-header" id="headingSpoiler2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Running Cells in a Notebook</h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p><img src="../fig/jupyter_overview.png" alt="Overview of the Jupyter Notebook graphical user interface" class="figure"> To
 run Python code in a Jupyter notebook cell, click on a cell in the
@@ -558,6 +519,45 @@ dropdown in the toolbar), and add the Python code in that cell. After
 you have added the code, you can run the cell by selecting “Run” -&gt;
 “Run selected cell” in the top menu, or pressing
 <kbd>Shift</kbd>+<kbd>Enter</kbd>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Enabling the ipympl backend in Jupyter notebooks</h3>
+</button>
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div class="accordion-body">
+<p>This lesson uses Matplotlib features to display images, and some
+interactive features will be valuable. To enable the interactive tools
+in JupyterLab, the <code>ipympl</code> package is required.The
+<code>ipympl</code> backend can be enabled with the
+<code>%matplotlib</code> Jupyter magic. Put the following command in a
+cell in your notebooks (e.g., at the top) and execute the cell before
+any plotting commands.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Older JupyterLab versions</h3>
+</button>
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
+<div class="accordion-body">
+<p>If you are using an older version of JupyterLab, you may also need to
+install the labextensions manually, as explained in the <a href="https://github.com/matplotlib/ipympl#readme" class="external-link">README file</a> for
+the <code>ipympl</code> package.</p>
 </div>
 </div>
 </div>
