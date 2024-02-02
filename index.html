@@ -336,11 +336,27 @@ your operating system. Make sure to choose the Python 3 version (as
 opposed to the one with Python 2).</p></li>
 <li>
 <p>Set up a Conda environment for this Lesson and install the
-necessary packages. Windows users will need to run these commands within
-a Anaconda Prompt.</p>
+necessary packages. To do this open a terminal (or Anaconda Prompt if
+using Windows) and run the following commands:</p>
 <pre class="shell"><code>conda create -y -n image-env -c conda-forge python=3.9
 conda activate image-env
 conda install -c conda-forge scikit-image ipympl napari pyqt jupyterlab</code></pre>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Instructions for Windows</h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div class="accordion-body">
+<p>Launch the Anaconda Prompt program and run your commands within this.
+(Running conda commands on the standard Command Prompt will return an
+error:
+<code>'conda' is not recognized as an internal or external command, operable program or batch file.</code>)</p>
+</div>
+</div>
+</div>
+</div>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -383,37 +399,10 @@ the <code>ipympl</code> package.</p>
 </li>
 <li>
 <p>Open a Jupyter notebook:</p>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Instructions for Linux &amp; Mac</h3>
-</button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
-<div class="accordion-body">
-<p>Open a terminal activate your environment and open Jupyter Lab:</p>
+<p>Open a terminal (or Anaconda Prompt if using Windows), activate your
+environment and open Jupyter Lab:</p>
 <pre class="shell"><code>conda activate image-env
 jupyter lab</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Instructions for Windows</h3>
-</button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
-<div class="accordion-body">
-<p>Launch the Anaconda Prompt program and run your commands within this.
-(Running conda commands on the standard Command Prompt will return an
-error:
-<code>'conda' is not recognized as an internal or external command, operable program or batch file.</code>)</p>
-</div>
-</div>
-</div>
-</div>
 <p>After Jupyter Lab has launched, click the “Python 3” button under
 “Notebook” in the launcher window, or use the “File” menu, to open a new
 Python 3 notebook.</p>
@@ -451,13 +440,13 @@ displayed in an interactive widget. When hovering over the images with
 the mouse pointer, the pixel coordinates and colour values are displayed
 below the image. It will also open a Napari Viewer and display an image
 within it.</p>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Running Cells in a Notebook</h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p><img src="fig/jupyter_overview.png" alt="Overview of the Jupyter Notebook graphical user interface" class="figure"> To
 run Python code in a Jupyter notebook cell, click on a cell in the
