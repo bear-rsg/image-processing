@@ -347,13 +347,12 @@ timelapse movie.</li>
 <p>In this episode we will move beyond 2D RGB image data and learn how
 to process and visualise multidimensional image data including 3D
 volumes and timelapse movies.</p>
-<div id="unofficial-episode" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="unofficial-episode" class="callout-inner">
-<h3 class="callout-title">Unofficial episode<a class="anchor" aria-label="anchor" href="#unofficial-episode"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="unofficial-episode">Unofficial episode<a class="anchor" aria-label="anchor" href="#unofficial-episode"></a></h3>
 <div class="callout-content">
 <p>This additional episode is not part of the official <a href="https://datacarpentry.org/image-processing/" class="external-link">Carpentries Image
 Processing with Python Lesson</a>. It was developed by <a href="https://www.birmingham.ac.uk/research/arc/rsg/staff/jeremy-pike.aspx" class="external-link">Jeremy
@@ -369,14 +368,14 @@ Birmingham.</p>
 <hr class="half-width"><div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> skimage <span class="im">as</span> ski</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> napari</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>widget</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">import</span> skimage <span class="im">as</span> ski</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="im">import</span> napari</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">%</span>matplotlib</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>widget</span></code></pre>
 </div>
 </section><section id="what-is-multidimensional-image-data"><h2 class="section-heading">What is multidimensional image data?<a class="anchor" aria-label="anchor" href="#what-is-multidimensional-image-data"></a>
 </h2>
@@ -439,7 +438,7 @@ the notebook and the GUI:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>viewer <span class="op">=</span> napari.Viewer()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>viewer <span class="op">=</span> napari.Viewer()</span></code></pre>
 </div>
 <p>The Napari Viewer displays data through <a href="https://napari.org/stable/api/napari.layers.html" class="external-link">Layers</a>.
 There are different Layer subclasses for different types of data.
@@ -451,11 +450,11 @@ Let’s load two RGB images and add them to the Viewer as
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>colonies_01 <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/colonies-01.tif"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>colonies_02 <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/colonies-02.tif"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>colonies_01, name<span class="op">=</span><span class="st">"colonies_01"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>colonies_02, name<span class="op">=</span><span class="st">"colonies_02"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>napari.utils.nbscreenshot(viewer)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>colonies_01 <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/colonies-01.tif"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>colonies_02 <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/colonies-02.tif"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>colonies_01, name<span class="op">=</span><span class="st">"colonies_01"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>colonies_02, name<span class="op">=</span><span class="st">"colonies_02"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>napari.utils.nbscreenshot(viewer)</span></code></pre>
 </div>
 <figure><img src="../fig/colonies-napari.png" alt="colonies napari ss" class="figure mx-auto d-block"></figure><p>Here we use the <code>viewer.add_image()</code> function to add
 <code>Image</code> Layers to the Viewer. We set <code>rgb=True</code> to
@@ -466,8 +465,8 @@ data:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cells <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/FluorescentCells.tif"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cells.shape)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>cells <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/FluorescentCells.tif"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">print</span>(cells.shape)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -481,16 +480,15 @@ want to visualise each channel independently. To do this we do not set
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span><span class="st">"cells"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>viewer.layers.clear()</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span><span class="st">"cells"</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/cells-napari.png" alt="cells napari ss" class="figure mx-auto d-block"></figure><div id="clearing-the-napari-viewer" class="callout callout">
+<figure><img src="../fig/cells-napari.png" alt="cells napari ss" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="clearing-the-napari-viewer" class="callout-inner">
-<h3 class="callout-title">Clearing the Napari Viewer<a class="anchor" aria-label="anchor" href="#clearing-the-napari-viewer"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="clearing-the-napari-viewer">Clearing the Napari Viewer<a class="anchor" aria-label="anchor" href="#clearing-the-napari-viewer"></a></h3>
 <div class="callout-content">
 <p>When we want to close all Layers in a Viewer instance we can use
 <code>viewer.layers.clear()</code>. This allows us to start fresh,
@@ -510,8 +508,8 @@ the <code>channel_axis</code> variable:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span>[<span class="st">"membrane"</span>, <span class="st">"cytoplasm"</span>, <span class="st">"nucleus"</span>], channel_axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>viewer.layers.clear()</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span>[<span class="st">"membrane"</span>, <span class="st">"cytoplasm"</span>, <span class="st">"nucleus"</span>], channel_axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/cells-seperate-napari.png" alt="cells seperate napari ss" class="figure mx-auto d-block"></figure><p>Using what we have learnt in the previous Episodes let’s segment the
 nuclei . First we produce a binary mask of the nuclei by blurring the
@@ -521,19 +519,19 @@ identify individual nuclei:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>blurred_nuclei <span class="op">=</span> ski.filters.gaussian(cells[<span class="dv">2</span>], sigma<span class="op">=</span><span class="fl">2.0</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> ski.filters.threshold_otsu(blurred_nuclei)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>nuclei_mask <span class="op">=</span> blurred_nuclei <span class="op">&gt;</span> t</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>nuclei_labels <span class="op">=</span> ski.measure.label(nuclei_mask, connectivity<span class="op">=</span><span class="dv">2</span>, return_num<span class="op">=</span><span class="va">False</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>blurred_nuclei <span class="op">=</span> ski.filters.gaussian(cells[<span class="dv">2</span>], sigma<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>t <span class="op">=</span> ski.filters.threshold_otsu(blurred_nuclei)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>nuclei_mask <span class="op">=</span> blurred_nuclei <span class="op">&gt;</span> t</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>nuclei_labels <span class="op">=</span> ski.measure.label(nuclei_mask, connectivity<span class="op">=</span><span class="dv">2</span>, return_num<span class="op">=</span><span class="va">False</span>)</span></code></pre>
 </div>
 <p>Now lets display the nuclei channel and overlay the labels within
 Napari using a <code>Label</code> layer:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells[<span class="dv">2</span>], name<span class="op">=</span><span class="st">"nuclei"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>nuclei_labels, name<span class="op">=</span><span class="st">"nuclei_labels"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>viewer.layers.clear()</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells[<span class="dv">2</span>], name<span class="op">=</span><span class="st">"nuclei"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>nuclei_labels, name<span class="op">=</span><span class="st">"nuclei_labels"</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/nuc-napari.png" alt="nuclei napari ss" class="figure mx-auto d-block"></figure><p>We can also interactively annotate images with shapes using a
 <code>Shapes</code> Layer. Let’s display all three channels and then do
@@ -541,9 +539,9 @@ this within the GUI:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span><span class="st">"cells"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the instructor will demonstrate how to add a `Shapes` Layer and draw around cells using polygons</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>viewer.layers.clear()</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span><span class="st">"cells"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># the instructor will demonstrate how to add a `Shapes` Layer and draw around cells using polygons</span></span></code></pre>
 </div>
 <figure><img src="../fig/shapes-napari.png" alt="shapes napari ss" class="figure mx-auto d-block"></figure><div id="using-napari-as-an-image-viewer-20-min" class="callout challenge">
 <div class="callout-square">
@@ -583,35 +581,35 @@ as an input parameter.</li>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_colonies_napari(image_filename, viewer, sigma<span class="op">=</span><span class="fl">1.0</span>, min_colony_size<span class="op">=</span><span class="dv">10</span>, connectivity<span class="op">=</span><span class="dv">2</span>):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  bacteria_image <span class="op">=</span> iio.imread(image_filename)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  gray_bacteria <span class="op">=</span> ski.color.rgb2gray(bacteria_image)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  blurred_image <span class="op">=</span> ski.filters.gaussian(gray_bacteria, sigma<span class="op">=</span>sigma)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create mask excluding the very bright pixels outside the dish</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># we dont want to include these when calculating the automated threshold</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  mask <span class="op">=</span> blurred_image <span class="op">&lt;</span> <span class="fl">0.90</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate an automated threshold value within the dish using the Otsu method</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  t <span class="op">=</span> ski.filters.threshold_otsu(blurred_image[mask])</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># update mask to select pixels both within the dish and less than t</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  mask <span class="op">=</span> np.logical_and(mask, blurred_image <span class="op">&lt;</span> t)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove objects smaller than specified area</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  mask <span class="op">=</span> ski.morphology.remove_small_objects(mask, min_size<span class="op">=</span>min_colony_size)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  labeled_image, count <span class="op">=</span> ski.measure.label(mask, return_num<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> colonies in </span><span class="sc">{</span>image_filename<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add the orginal image (RGB) to the Napari Viewer</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  viewer.add_image(data<span class="op">=</span>bacteria_image, name<span class="op">=</span><span class="st">"bacteria"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add the labeled image to the Napari Viewer</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  viewer.add_labels(data<span class="op">=</span>labeled_image, name<span class="op">=</span><span class="st">"colony masks"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="kw">def</span> count_colonies_napari(image_filename, viewer, sigma<span class="op">=</span><span class="fl">1.0</span>, min_colony_size<span class="op">=</span><span class="dv">10</span>, connectivity<span class="op">=</span><span class="dv">2</span>):</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  bacteria_image <span class="op">=</span> iio.imread(image_filename)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  gray_bacteria <span class="op">=</span> ski.color.rgb2gray(bacteria_image)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  blurred_image <span class="op">=</span> ski.filters.gaussian(gray_bacteria, sigma<span class="op">=</span>sigma)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="co"># create mask excluding the very bright pixels outside the dish</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="co"># we dont want to include these when calculating the automated threshold</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  mask <span class="op">=</span> blurred_image <span class="op">&lt;</span> <span class="fl">0.90</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="co"># calculate an automated threshold value within the dish using the Otsu method</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  t <span class="op">=</span> ski.filters.threshold_otsu(blurred_image[mask])</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="co"># update mask to select pixels both within the dish and less than t</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>  mask <span class="op">=</span> np.logical_and(mask, blurred_image <span class="op">&lt;</span> t)</span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>  <span class="co"># remove objects smaller than specified area</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  mask <span class="op">=</span> ski.morphology.remove_small_objects(mask, min_size<span class="op">=</span>min_colony_size)</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  labeled_image, count <span class="op">=</span> ski.measure.label(mask, return_num<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> colonies in </span><span class="sc">{</span>image_filename<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>  <span class="co"># add the orginal image (RGB) to the Napari Viewer</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>  viewer.add_image(data<span class="op">=</span>bacteria_image, name<span class="op">=</span><span class="st">"bacteria"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a>  <span class="co"># add the labeled image to the Napari Viewer</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>  viewer.add_labels(data<span class="op">=</span>labeled_image, name<span class="op">=</span><span class="st">"colony masks"</span>)</span></code></pre>
 </div>
 <p>To run this function on <code>"data/colonies-03.tif"</code>:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()  <span class="co"># or viewer = napari.Viewer() if you want a new Viewer</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>count_colonies_napari(image_filename<span class="op">=</span><span class="st">"data/colonies-03.tif"</span>, viewer<span class="op">=</span>viewer)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>viewer.layers.clear()  <span class="co"># or viewer = napari.Viewer() if you want a new Viewer</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>count_colonies_napari(image_filename<span class="op">=</span><span class="st">"data/colonies-03.tif"</span>, viewer<span class="op">=</span>viewer)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -638,13 +636,12 @@ tutorial</a>.</p>
 </div>
 </div>
 </div>
-<div id="napari-plugins" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="napari-plugins" class="callout-inner">
-<h3 class="callout-title">Napari plugins<a class="anchor" aria-label="anchor" href="#napari-plugins"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="napari-plugins">Napari plugins<a class="anchor" aria-label="anchor" href="#napari-plugins"></a></h3>
 <div class="callout-content">
 <p><a href="https://napari.org/stable/plugins/index.html" class="external-link">Plugins</a>
 extend Napari’s core functionally and allow you to add lots of cool and
@@ -684,13 +681,12 @@ a meta-plugin for building image processing workflows.</li>
 </ul></div>
 </div>
 </div>
-<div id="getting-help-on-image.sc" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="getting-help-on-image.sc" class="callout-inner">
-<h3 class="callout-title">Getting help on image.sc<a class="anchor" aria-label="anchor" href="#getting-help-on-image.sc"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="getting-help-on-image-sc">Getting help on image.sc<a class="anchor" aria-label="anchor" href="#getting-help-on-image-sc"></a></h3>
 <div class="callout-content">
 <p><a href="https://forum.image.sc/" class="external-link">image.sc</a> is a community forum
 for all software-oriented aspects of scientific imaging, particularly
@@ -718,10 +714,10 @@ dimensions (lateral). Let’s load the data and visualise with Napari:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cells3d <span class="op">=</span> ski.data.cells3d()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells3d, name<span class="op">=</span>[<span class="st">"membrane"</span>, <span class="st">"nucleus"</span>], channel_axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cells3d.shape)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>cells3d <span class="op">=</span> ski.data.cells3d()</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>viewer.layers.clear()</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells3d, name<span class="op">=</span>[<span class="st">"membrane"</span>, <span class="st">"nucleus"</span>], channel_axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="bu">print</span>(cells3d.shape)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -737,17 +733,17 @@ nuclei channel using a 3D Gaussian filter and add the result as a
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the nuclei channel</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>nuclei <span class="op">=</span> cells3d[:, <span class="dv">1</span>, :, :]</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># store the voxel size as a NumPy array (in microns)</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>voxel_size <span class="op">=</span> np.array([<span class="fl">0.29</span>, <span class="fl">0.26</span>, <span class="fl">0.26</span>])</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get sigma (std) values for each dimension that corresponds to 0.5 microns</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.5</span> <span class="op">/</span> voxel_size</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># blur data with 3D Guassian filter</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>blurred_nuclei <span class="op">=</span> ski.filters.gaussian(nuclei, sigma<span class="op">=</span>sigma)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add to Napari Viewer</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>blurred_nuclei, name<span class="op">=</span><span class="st">"nucleus_blurred"</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sigma)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># extract the nuclei channel</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>nuclei <span class="op">=</span> cells3d[:, <span class="dv">1</span>, :, :]</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># store the voxel size as a NumPy array (in microns)</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>voxel_size <span class="op">=</span> np.array([<span class="fl">0.29</span>, <span class="fl">0.26</span>, <span class="fl">0.26</span>])</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co"># get sigma (std) values for each dimension that corresponds to 0.5 microns</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.5</span> <span class="op">/</span> voxel_size</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co"># blur data with 3D Guassian filter</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>blurred_nuclei <span class="op">=</span> ski.filters.gaussian(nuclei, sigma<span class="op">=</span>sigma)</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co"># add to Napari Viewer</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>blurred_nuclei, name<span class="op">=</span><span class="st">"nucleus_blurred"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="bu">print</span>(sigma)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -804,30 +800,30 @@ existing Napari Viewer:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use an automated Otsu threshold to produce a binary mask of the nuceli</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> ski.filters.threshold_otsu(blurred_nuclei)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>nuclei_mask <span class="op">=</span> blurred_nuclei <span class="op">&gt;</span> t</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remove objects from the mask smaller than 5 microns^3</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># np.prod(voxel_size) returns the volume of a voxel in microns^3</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>min_size <span class="op">=</span> <span class="dv">5</span> <span class="op">/</span> np.prod(voxel_size)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>nuclei_mask <span class="op">=</span> ski.morphology.remove_small_objects(nuclei_mask, min_size<span class="op">=</span>min_size, connectivity<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># label 3D connected components</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># we specify connectivity=3 but this is the default behaviour for 3D data</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>nuclei_labels <span class="op">=</span> ski.measure.label(nuclei_mask, connectivity<span class="op">=</span><span class="dv">3</span>, return_num<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add to Napari Viewer</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>nuclei_labels, name<span class="op">=</span><span class="st">"nuclei_labels"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># use an automated Otsu threshold to produce a binary mask of the nuceli</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>t <span class="op">=</span> ski.filters.threshold_otsu(blurred_nuclei)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>nuclei_mask <span class="op">=</span> blurred_nuclei <span class="op">&gt;</span> t</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># remove objects from the mask smaller than 5 microns^3</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># np.prod(voxel_size) returns the volume of a voxel in microns^3</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>min_size <span class="op">=</span> <span class="dv">5</span> <span class="op">/</span> np.prod(voxel_size)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>nuclei_mask <span class="op">=</span> ski.morphology.remove_small_objects(nuclei_mask, min_size<span class="op">=</span>min_size, connectivity<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># label 3D connected components</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># we specify connectivity=3 but this is the default behaviour for 3D data</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>nuclei_labels <span class="op">=</span> ski.measure.label(nuclei_mask, connectivity<span class="op">=</span><span class="dv">3</span>, return_num<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># add to Napari Viewer</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>nuclei_labels, name<span class="op">=</span><span class="st">"nuclei_labels"</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/cells3d-labels-napari.png" alt="cell3d labels napari ss" class="figure mx-auto d-block"></figure><p>To extract the properties of the connected components we can use
 <code>ski.measure.regionprops()</code>:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>props <span class="op">=</span> ski.measure.regionprops(nuclei_labels)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get the cell volumes in pixels as a NumPy array</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cell_volumes_voxels <span class="op">=</span> np.array([objf[<span class="st">"area"</span>] <span class="cf">for</span> objf <span class="kw">in</span> props])</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the mean and convert to microns^3</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>cell_volumes_mean <span class="op">=</span> np.mean(cell_volumes_voxels) <span class="op">*</span> np.prod(voxel_size)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(cell_volumes_voxels)<span class="sc">}</span><span class="ss"> distinct objects with a mean volume of </span><span class="sc">{</span>cell_volumes_mean<span class="sc">}</span><span class="ss"> microns^3"</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>props <span class="op">=</span> ski.measure.regionprops(nuclei_labels)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># get the cell volumes in pixels as a NumPy array</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>cell_volumes_voxels <span class="op">=</span> np.array([objf[<span class="st">"area"</span>] <span class="cf">for</span> objf <span class="kw">in</span> props])</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># get the mean and convert to microns^3</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>cell_volumes_mean <span class="op">=</span> np.mean(cell_volumes_voxels) <span class="op">*</span> np.prod(voxel_size)</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(cell_volumes_voxels)<span class="sc">}</span><span class="ss"> distinct objects with a mean volume of </span><span class="sc">{</span>cell_volumes_mean<span class="sc">}</span><span class="ss"> microns^3"</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -866,14 +862,14 @@ need to refer to the <code>ski.measure.regionprops()</code> <a href="https://sci
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>props <span class="op">=</span> ski.measure.regionprops(nuclei_labels, intensity_image<span class="op">=</span>nuclei)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get the cell volumes in pixels as a NumPy array</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cell_volumes_pixels <span class="op">=</span> np.array([objf[<span class="st">"area"</span>] <span class="cf">for</span> objf <span class="kw">in</span> props])</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the mean and convert to microns^3</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>cell_volumes_mean <span class="op">=</span> np.mean(cell_volumes_pixels) <span class="op">*</span> np.prod(voxel_size)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mean intensity within each object</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>cell_mean_intensities <span class="op">=</span> np.array([objf[<span class="st">"intensity_mean"</span>] <span class="cf">for</span> objf <span class="kw">in</span> props])</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(cell_volumes_pixels)<span class="sc">}</span><span class="ss"> distinct objects with a mean volume of </span><span class="sc">{</span>cell_volumes_mean<span class="sc">}</span><span class="ss"> microns^3 and a mean intensity of </span><span class="sc">{</span>np<span class="sc">.</span>mean(cell_mean_intensities)<span class="sc">}</span><span class="ss">"</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>props <span class="op">=</span> ski.measure.regionprops(nuclei_labels, intensity_image<span class="op">=</span>nuclei)</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co"># get the cell volumes in pixels as a NumPy array</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>cell_volumes_pixels <span class="op">=</span> np.array([objf[<span class="st">"area"</span>] <span class="cf">for</span> objf <span class="kw">in</span> props])</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># get the mean and convert to microns^3</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>cell_volumes_mean <span class="op">=</span> np.mean(cell_volumes_pixels) <span class="op">*</span> np.prod(voxel_size)</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="co"># mean intensity within each object</span></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a>cell_mean_intensities <span class="op">=</span> np.array([objf[<span class="st">"intensity_mean"</span>] <span class="cf">for</span> objf <span class="kw">in</span> props])</span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(cell_volumes_pixels)<span class="sc">}</span><span class="ss"> distinct objects with a mean volume of </span><span class="sc">{</span>cell_volumes_mean<span class="sc">}</span><span class="ss"> microns^3 and a mean intensity of </span><span class="sc">{</span>np<span class="sc">.</span>mean(cell_mean_intensities)<span class="sc">}</span><span class="ss">"</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -896,10 +892,10 @@ visualise with Napari:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cell_timelapse <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/cell_timelapse.tif"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>viewer.layers.clear()</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cell_timelapse, name<span class="op">=</span><span class="st">"timelapse"</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cell_timelapse.shape)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>cell_timelapse <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">"data/cell_timelapse.tif"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>viewer.layers.clear()</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cell_timelapse, name<span class="op">=</span><span class="st">"timelapse"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="bu">print</span>(cell_timelapse.shape)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -917,19 +913,19 @@ intensity of each frame in the timelapse and plot the results:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty list to store frame intensitys</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mean_intensities <span class="op">=</span> []</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through frames </span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># enumerate gives convenient access to both the frame index and the frame</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> frame_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(cell_timelapse):</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  frame_mean <span class="op">=</span> np.mean(frame)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add frame mean to list</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  mean_intensities.append(frame_mean)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.plot(mean_intensities)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Timepoint"</span>)</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean frame intensity"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># empty list to store frame intensitys</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>mean_intensities <span class="op">=</span> []</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co"># loop through frames </span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="co"># enumerate gives convenient access to both the frame index and the frame</span></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="cf">for</span> frame_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(cell_timelapse):</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>  frame_mean <span class="op">=</span> np.mean(frame)</span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>  <span class="co"># add frame mean to list</span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a>  mean_intensities.append(frame_mean)</span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a>plt.plot(mean_intensities)</span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a>plt.xlabel(<span class="st">"Timepoint"</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean frame intensity"</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/cells_timelapse_mean_plot.png" alt="cell timelapse mean plot ss" class="figure mx-auto d-block"></figure><p>We can see that the frame intensity trends up throughout the movie
 with dips around timepoint thirty which if you look corresponds to when
@@ -967,32 +963,32 @@ array should be created outside the loop and filled in within it.</li>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty list for nuclear areas</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>nuclear_areas <span class="op">=</span> []</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># boolean mask for nuclear mask</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># same shape as original timelapse</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.zeros(cell_timelapse.shape, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through timepoints</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> frame_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(cell_timelapse):</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># blur the frame to reduce noise</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  blurred_frame <span class="op">=</span> ski.filters.gaussian(frame, sigma<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># threshold with an Otsu approach</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  t <span class="op">=</span> ski.filters.threshold_otsu(blurred_frame)</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  frame_mask <span class="op">=</span> blurred_frame <span class="op">&gt;</span> t</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fill in the corresponding frame of our global mask</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  mask[frame_index] <span class="op">=</span> frame_mask</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># append the area of the mask for this frame (the sum)</span></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  nuclear_areas.append(np.<span class="bu">sum</span>(frame_mask))</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add mask to Napari Viewer</span></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>mask, name<span class="op">=</span><span class="st">"nuclear mask"</span>)</span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the nuclear area over time</span></span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>plt.plot(nuclear_areas)</span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Timepoint"</span>)</span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Total nuclear area"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># empty list for nuclear areas</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>nuclear_areas <span class="op">=</span> []</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="co"># boolean mask for nuclear mask</span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="co"># same shape as original timelapse</span></span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>mask <span class="op">=</span> np.zeros(cell_timelapse.shape, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a><span class="co"># iterate through timepoints</span></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a><span class="cf">for</span> frame_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(cell_timelapse):</span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>  <span class="co"># blur the frame to reduce noise</span></span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>  blurred_frame <span class="op">=</span> ski.filters.gaussian(frame, sigma<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>  <span class="co"># threshold with an Otsu approach</span></span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a>  t <span class="op">=</span> ski.filters.threshold_otsu(blurred_frame)</span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a>  frame_mask <span class="op">=</span> blurred_frame <span class="op">&gt;</span> t</span>
+<span id="cb26-14"><a href="#cb26-14" tabindex="-1"></a>  <span class="co"># fill in the corresponding frame of our global mask</span></span>
+<span id="cb26-15"><a href="#cb26-15" tabindex="-1"></a>  mask[frame_index] <span class="op">=</span> frame_mask</span>
+<span id="cb26-16"><a href="#cb26-16" tabindex="-1"></a>  <span class="co"># append the area of the mask for this frame (the sum)</span></span>
+<span id="cb26-17"><a href="#cb26-17" tabindex="-1"></a>  nuclear_areas.append(np.<span class="bu">sum</span>(frame_mask))</span>
+<span id="cb26-18"><a href="#cb26-18" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" tabindex="-1"></a><span class="co"># add mask to Napari Viewer</span></span>
+<span id="cb26-20"><a href="#cb26-20" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>mask, name<span class="op">=</span><span class="st">"nuclear mask"</span>)</span>
+<span id="cb26-21"><a href="#cb26-21" tabindex="-1"></a></span>
+<span id="cb26-22"><a href="#cb26-22" tabindex="-1"></a><span class="co"># plot the nuclear area over time</span></span>
+<span id="cb26-23"><a href="#cb26-23" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb26-24"><a href="#cb26-24" tabindex="-1"></a>plt.plot(nuclear_areas)</span>
+<span id="cb26-25"><a href="#cb26-25" tabindex="-1"></a>plt.xlabel(<span class="st">"Timepoint"</span>)</span>
+<span id="cb26-26"><a href="#cb26-26" tabindex="-1"></a>plt.ylabel(<span class="st">"Total nuclear area"</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/cells-timelapse-mask-napari.png" alt="cell timelapse mask napari ss" class="figure mx-auto d-block"></figure><figure><img src="../fig/cells_timelapse_area_plot.png" alt="cell timelapse area plot ss" class="figure mx-auto d-block"></figure><p>Note the two large drops in area around timepoint thirty
 corresponding the division events.</p>
@@ -1032,39 +1028,39 @@ work? Do you think it would be sufficient for more complex data?</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boolean mask for nuclear mask</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same shape as original timelapse</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.zeros(cell_timelapse.shape, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.zeros(cell_timelapse.shape, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through timepoints</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> time_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(cell_timelapse):</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># blur the frame to reduce noise</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  blurred_frame <span class="op">=</span> ski.filters.gaussian(frame, sigma<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># threshold with an Otsu approach</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  t <span class="op">=</span> ski.filters.threshold_otsu(blurred_frame)</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  frame_mask <span class="op">=</span> blurred_frame <span class="op">&gt;</span> t</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fill in the corresponding frame of our global mask</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  mask[time_index] <span class="op">=</span> frame_mask</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co"># find the objects (connected components) in the 3D (2D + time) mask</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>labeled_mask, num_ccs <span class="op">=</span> ski.measure.label(mask, connectivity<span class="op">=</span><span class="dv">3</span>, return_num<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co"># add labeled objects to Napari Viewer </span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>labeled_mask, name<span class="op">=</span><span class="st">"labeled_mask"</span>)</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="co"># plot for area of each object over time</span></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Timepoint"</span>)</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Nuclear area"</span>)</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through objects</span></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label_index <span class="kw">in</span> <span class="bu">range</span>(num_ccs):</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># empty list for area of this object (nucelus) over time</span></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  nuclear_area <span class="op">=</span> []</span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># iterate through timepoints and retrieve object areas</span></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> time_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(labeled_mask):</span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    nuclear_area.append(np.<span class="bu">sum</span>(frame <span class="op">==</span> label_index <span class="op">+</span> <span class="dv">1</span>))</span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add line to plot for this object (nucelus)</span></span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>  plt.plot(nuclear_area)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># boolean mask for nuclear mask</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># same shape as original timelapse</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>mask <span class="op">=</span> np.zeros(cell_timelapse.shape, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>mask <span class="op">=</span> np.zeros(cell_timelapse.shape, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co"># iterate through timepoints</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="cf">for</span> time_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(cell_timelapse):</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>  <span class="co"># blur the frame to reduce noise</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>  blurred_frame <span class="op">=</span> ski.filters.gaussian(frame, sigma<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a>  <span class="co"># threshold with an Otsu approach</span></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a>  t <span class="op">=</span> ski.filters.threshold_otsu(blurred_frame)</span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a>  frame_mask <span class="op">=</span> blurred_frame <span class="op">&gt;</span> t</span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a>  <span class="co"># fill in the corresponding frame of our global mask</span></span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a>  mask[time_index] <span class="op">=</span> frame_mask</span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a><span class="co"># find the objects (connected components) in the 3D (2D + time) mask</span></span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>labeled_mask, num_ccs <span class="op">=</span> ski.measure.label(mask, connectivity<span class="op">=</span><span class="dv">3</span>, return_num<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a><span class="co"># add labeled objects to Napari Viewer </span></span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a>viewer.add_labels(data<span class="op">=</span>labeled_mask, name<span class="op">=</span><span class="st">"labeled_mask"</span>)</span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a><span class="co"># plot for area of each object over time</span></span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a>plt.xlabel(<span class="st">"Timepoint"</span>)</span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a>plt.ylabel(<span class="st">"Nuclear area"</span>)</span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a><span class="co"># iterate through objects</span></span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1"></a><span class="cf">for</span> label_index <span class="kw">in</span> <span class="bu">range</span>(num_ccs):</span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1"></a>  <span class="co"># empty list for area of this object (nucelus) over time</span></span>
+<span id="cb27-28"><a href="#cb27-28" tabindex="-1"></a>  nuclear_area <span class="op">=</span> []</span>
+<span id="cb27-29"><a href="#cb27-29" tabindex="-1"></a>  <span class="co"># iterate through timepoints and retrieve object areas</span></span>
+<span id="cb27-30"><a href="#cb27-30" tabindex="-1"></a>  <span class="cf">for</span> time_index, frame <span class="kw">in</span> <span class="bu">enumerate</span>(labeled_mask):</span>
+<span id="cb27-31"><a href="#cb27-31" tabindex="-1"></a>    nuclear_area.append(np.<span class="bu">sum</span>(frame <span class="op">==</span> label_index <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb27-32"><a href="#cb27-32" tabindex="-1"></a>  <span class="co"># add line to plot for this object (nucelus)</span></span>
+<span id="cb27-33"><a href="#cb27-33" tabindex="-1"></a>  plt.plot(nuclear_area)</span></code></pre>
 </div>
 <figure><img src="../fig/cells-timelapse-tracking-napari.png" alt="cell timelapse tracking napari ss" class="figure mx-auto d-block"></figure><figure><img src="../fig/cells_timelapse_tracking_plot.png" alt="cell timelapse tracking plot ss" class="figure mx-auto d-block"></figure><p>From the plot we can see our approach has worked well for this simple
 example. The movie starts with two nuclei which undergo division such
@@ -1160,7 +1156,7 @@ viewer with <code>viewer.add_image()</code> and
   "identifier": "https://bear-rsg.github.io/image-processing/instructor/10-multidimensional-data.html",
   "dateCreated": "2017-03-14",
   "dateModified": "2024-01-26",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

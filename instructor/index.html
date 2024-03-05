@@ -477,27 +477,27 @@ the notebook:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> skimage <span class="im">as</span> ski</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> napari</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># load an image</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">'data/colonies-01.tif'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate it by 45 degrees</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>rotated <span class="op">=</span> ski.transform.rotate(image<span class="op">=</span>image, angle<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># display the original image and its rotated version side by side</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(image)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(rotated)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># open the image in Napari</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>viewer <span class="op">=</span> napari.Viewer()</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>image, name<span class="op">=</span><span class="st">"colonies_01"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="im">import</span> skimage <span class="im">as</span> ski</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="im">import</span> napari</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co"># load an image</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>image <span class="op">=</span> iio.imread(uri<span class="op">=</span><span class="st">'data/colonies-01.tif'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co"># rotate it by 45 degrees</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>rotated <span class="op">=</span> ski.transform.rotate(image<span class="op">=</span>image, angle<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co"># display the original image and its rotated version side by side</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(image)</span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(rotated)</span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co"># open the image in Napari</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>viewer <span class="op">=</span> napari.Viewer()</span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>image, name<span class="op">=</span><span class="st">"colonies_01"</span>, rgb<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 <p>Upon execution of the cell, a figure with two images should be
 displayed in an interactive widget. When hovering over the images with
@@ -542,7 +542,7 @@ any plotting commands.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="op">%</span>matplotlib widget</span></code></pre>
 </div>
 </div>
 </div>
@@ -617,8 +617,8 @@ and install</a> it.</p></li>
   "url": "https://bear-rsg.github.io/image-processing/instructor/index.html",
   "identifier": "https://bear-rsg.github.io/image-processing/instructor/index.html",
   "dateCreated": "2017-03-14",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
