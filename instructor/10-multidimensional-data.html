@@ -347,12 +347,13 @@ timelapse movie.</li>
 <p>In this episode we will move beyond 2D RGB image data and learn how
 to process and visualise multidimensional image data including 3D
 volumes and timelapse movies.</p>
-<div id="callout1" class="callout">
+<div id="unofficial-episode" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="unofficial-episode">Unofficial episode<a class="anchor" aria-label="anchor" href="#unofficial-episode"></a></h3>
+<div id="unofficial-episode" class="callout-inner">
+<h3 class="callout-title">Unofficial episode<a class="anchor" aria-label="anchor" href="#unofficial-episode"></a>
+</h3>
 <div class="callout-content">
 <p>This additional episode is not part of the official <a href="https://datacarpentry.org/image-processing/" class="external-link">Carpentries Image
 Processing with Python Lesson</a>. It was developed by <a href="https://www.birmingham.ac.uk/research/arc/rsg/staff/jeremy-pike.aspx" class="external-link">Jeremy
@@ -483,12 +484,13 @@ want to visualise each channel independently. To do this we do not set
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>viewer.layers.clear()</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>viewer.add_image(data<span class="op">=</span>cells, name<span class="op">=</span><span class="st">"cells"</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/cells-napari.png" alt="cells napari ss" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
+<figure><img src="../fig/cells-napari.png" alt="cells napari ss" class="figure mx-auto d-block"></figure><div id="clearing-the-napari-viewer" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="clearing-the-napari-viewer">Clearing the Napari Viewer<a class="anchor" aria-label="anchor" href="#clearing-the-napari-viewer"></a></h3>
+<div id="clearing-the-napari-viewer" class="callout-inner">
+<h3 class="callout-title">Clearing the Napari Viewer<a class="anchor" aria-label="anchor" href="#clearing-the-napari-viewer"></a>
+</h3>
 <div class="callout-content">
 <p>When we want to close all Layers in a Viewer instance we can use
 <code>viewer.layers.clear()</code>. This allows us to start fresh,
@@ -575,7 +577,7 @@ as an input parameter.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Your new function might look something like this:</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -636,12 +638,13 @@ tutorial</a>.</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="napari-plugins" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="napari-plugins">Napari plugins<a class="anchor" aria-label="anchor" href="#napari-plugins"></a></h3>
+<div id="napari-plugins" class="callout-inner">
+<h3 class="callout-title">Napari plugins<a class="anchor" aria-label="anchor" href="#napari-plugins"></a>
+</h3>
 <div class="callout-content">
 <p><a href="https://napari.org/stable/plugins/index.html" class="external-link">Plugins</a>
 extend Napari’s core functionally and allow you to add lots of cool and
@@ -681,12 +684,13 @@ a meta-plugin for building image processing workflows.</li>
 </ul></div>
 </div>
 </div>
-<div id="callout4" class="callout">
+<div id="getting-help-on-image.sc" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="getting-help-on-image-sc">Getting help on image.sc<a class="anchor" aria-label="anchor" href="#getting-help-on-image-sc"></a></h3>
+<div id="getting-help-on-image.sc" class="callout-inner">
+<h3 class="callout-title">Getting help on image.sc<a class="anchor" aria-label="anchor" href="#getting-help-on-image.sc"></a>
+</h3>
 <div class="callout-content">
 <p><a href="https://forum.image.sc/" class="external-link">image.sc</a> is a community forum
 for all software-oriented aspects of scientific imaging, particularly
@@ -792,7 +796,7 @@ voxels.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Starting with the 3D blurred nuclei volume as our starting point here
 is one potential solution that will segment the nuclei and add to the
@@ -857,7 +861,7 @@ need to refer to the <code>ski.measure.regionprops()</code> <a href="https://sci
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -957,7 +961,7 @@ array should be created outside the loop and filled in within it.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here is one potential solution:</p>
 <div class="codewrapper sourceCode" id="cb26">
@@ -1022,7 +1026,7 @@ work? Do you think it would be sufficient for more complex data?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Here is a potential solution:</p>
 <div class="codewrapper sourceCode" id="cb27">
@@ -1133,7 +1137,7 @@ viewer with <code>viewer.add_image()</code> and
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1156,7 +1160,7 @@ viewer with <code>viewer.add_image()</code> and
   "identifier": "https://bear-rsg.github.io/image-processing/instructor/10-multidimensional-data.html",
   "dateCreated": "2017-03-14",
   "dateModified": "2024-01-26",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>
