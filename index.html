@@ -337,17 +337,17 @@ optional but recommended, as this is the name we will use to refer to
 the folder throughout the lesson.)</p>
 </section><section id="software"><h2 class="section-heading">Software<a class="anchor" aria-label="anchor" href="#software"></a>
 </h2>
-<hr class="half-width"><ol style="list-style-type: decimal"><li><p>Download and install the latest <a href="https://www.anaconda.com/download/" class="external-link">Anaconda distribution</a> for
-your operating system. Make sure to choose the Python 3 version (as
-opposed to the one with Python 2).</p></li>
+<hr class="half-width"><ol style="list-style-type: decimal"><li><p>Download and install the latest <a href="https://github.com/conda-forge/miniforge?tab=readme-ov-file#miniforge3" class="external-link">Miniforge
+distribution</a> for your operating system. Make sure to choose the
+version with Python 3.10 in the base environment.</p></li>
 <li>
-<p>Set up a Conda environment for this Lesson and install the
-necessary packages. To do this open a terminal (or Anaconda Prompt if
-using Windows) and run the following commands:</p>
-<pre class="shell"><code>conda update --all --yes
-conda create -y -n image-env -c conda-forge python=3.9
-conda activate image-env
-conda install -y -c conda-forge scikit-image ipympl napari pyqt jupyterlab</code></pre>
+<p>Use Mamba to make a new environment for this Lesson and install
+the necessary packages. To do this open a terminal (or Miniforge3 Prompt
+if using Windows) and run the following commands:</p>
+<pre class="shell"><code>mamba update --all --yes
+mamba create -y -n image-env -c conda-forge python=3.9
+mamba activate image-env
+mamba install -y -c conda-forge scikit-image ipympl napari pyqt jupyterlab</code></pre>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -356,10 +356,10 @@ conda install -y -c conda-forge scikit-image ipympl napari pyqt jupyterlab</code
 </button>
 <div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
-<p>Launch the Anaconda Prompt program and run your commands within this.
-(Running conda commands on the standard Command Prompt will return an
-error:
-<code>'conda' is not recognized as an internal or external command, operable program or batch file.</code>)</p>
+<p>Launch the Miniforge3 Prompt program and run your commands within
+this. (Running mamba commands on the standard Command Prompt may return
+an error:
+<code>'mamba' is not recognized as an internal or external command, operable program or batch file.</code>)</p>
 </div>
 </div>
 </div>
@@ -367,9 +367,9 @@ error:
 </li>
 <li>
 <p>Open a Jupyter notebook:</p>
-<p>Open a terminal (or Anaconda Prompt if using Windows), activate your
-environment and open Jupyter Lab:</p>
-<pre class="shell"><code>conda activate image-env
+<p>Open a terminal (or Miniforge3 Prompt if using Windows), activate
+your environment and open Jupyter Lab:</p>
+<pre class="shell"><code>mamba activate image-env
 jupyter lab</code></pre>
 <p>After Jupyter Lab has launched, click the “Python 3” button under
 “Notebook” in the launcher window, or use the “File” menu, to open a new
