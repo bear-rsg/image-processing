@@ -304,7 +304,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Connected Component Analysis</h1>
-        <p>Last updated on 2024-01-03 |
+        <p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/datacarpentry/image-processing/edit/main/episodes/08-connected-components.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -649,8 +649,8 @@ display the labeled image like so:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>labeled_image, count <span class="op">=</span> connected_components(filename<span class="op">=</span><span class="st">"data/shapes-01.jpg"</span>, sigma<span class="op">=</span><span class="fl">2.0</span>, t<span class="op">=</span><span class="fl">0.9</span>, connectivity<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>plt.imshow(labeled_image)</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span></code></pre>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>ax.imshow(labeled_image)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>ax.set_axis_off()<span class="op">;</span></span></code></pre>
 </div>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -700,7 +700,7 @@ range we want the colormap to cover:</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>plt.imshow(labeled_image, vmin<span class="op">=</span>np.<span class="bu">min</span>(labeled_image), vmax<span class="op">=</span>np.<span class="bu">max</span>(labeled_image))</span></code></pre>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>ax.imshow(labeled_image, vmin<span class="op">=</span>np.<span class="bu">min</span>(labeled_image), vmax<span class="op">=</span>np.<span class="bu">max</span>(labeled_image))</span></code></pre>
 </div>
 <p>Note this is the default behaviour for newer versions of
 <code>matplotlib.pyplot.imshow</code>. Alternatively we could convert
@@ -717,9 +717,9 @@ the image to RGB and then display it.</p>
 <h3 class="callout-title">Suppressing outputs in Jupyter Notebooks<a class="anchor" aria-label="anchor" href="#suppressing-outputs-in-jupyter-notebooks"></a>
 </h3>
 <div class="callout-content">
-<p>We just used <code>plt.axis("off");</code> to hide the axis from the
-image for a visually cleaner figure. The semicolon is added to supress
-the output(s) of the statement, in this <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html" class="external-link">case</a>
+<p>We just used <code>ax.set_axis_off();</code> to hide the axis from
+the image for a visually cleaner figure. The semicolon is added to
+supress the output(s) of the statement, in this <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html" class="external-link">case</a>
 the axis limits. This is specific to Jupyter Notebooks.</p>
 </div>
 </div>
@@ -738,8 +738,8 @@ image:</p>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>colored_label_image <span class="op">=</span> ski.color.label2rgb(labeled_image, bg_label<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>plt.imshow(colored_label_image)</span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span></code></pre>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>ax.imshow(colored_label_image)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>ax.set_axis_off()<span class="op">;</span></span></code></pre>
 </div>
 <figure><img src="fig/shapes-01-labeled.png" alt="Labeled objects" class="figure mx-auto d-block"></figure><div id="how-many-objects-are-in-that-image-15-min" class="callout challenge">
 <div class="callout-square">
@@ -885,9 +885,9 @@ obtained with <code>ski.measure.regionprops</code>.</li>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>plt.hist(object_areas)</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>plt.xlabel(<span class="st">"Area (pixels)"</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of objects"</span>)<span class="op">;</span></span></code></pre>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>ax.hist(object_areas)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Area (pixels)"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of objects"</span>)<span class="op">;</span></span></code></pre>
 </div>
 <figure><img src="fig/shapes-01-areas-histogram.png" alt="Histogram of object areas" class="figure mx-auto d-block"></figure><p>The histogram shows the number of objects (vertical axis) whose area
 is within a certain range (horizontal axis). The height of the bars in
@@ -1093,8 +1093,8 @@ display the resulting labeled image:</p>
 <span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>colored_label_image <span class="op">=</span> ski.color.label2rgb(labeled_image, bg_label<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a></span>
 <span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>plt.imshow(colored_label_image)</span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>ax.imshow(colored_label_image)</span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>ax.set_axis_off()<span class="op">;</span></span>
 <span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a></span>
 <span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Found"</span>, count, <span class="st">"objects in the image."</span>)</span></code></pre>
 </div>
@@ -1150,10 +1150,10 @@ values in <code>labeled_image</code>.</p>
 <span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>colored_area_image <span class="op">=</span> object_areas[labeled_image]</span>
 <span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a></span>
 <span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>im <span class="op">=</span> plt.imshow(colored_area_image)</span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(colored_area_image)</span>
 <span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>cbar <span class="op">=</span> fig.colorbar(im, ax<span class="op">=</span>ax, shrink<span class="op">=</span><span class="fl">0.85</span>)</span>
 <span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>cbar.ax.set_title(<span class="st">"Area"</span>)</span>
-<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span></code></pre>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>ax.set_axis_off()<span class="op">;</span></span></code></pre>
 </div>
 <figure><img src="fig/shapes-01-objects-coloured-by-area.png" alt="Objects colored by area" class="figure mx-auto d-block"></figure><div id="callout5" class="callout">
 <div class="callout-square">
@@ -1261,8 +1261,8 @@ label.</li>
   "url": "https://bear-rsg.github.io/image-processing/08-connected-components.html",
   "identifier": "https://bear-rsg.github.io/image-processing/08-connected-components.html",
   "dateCreated": "2017-03-14",
-  "dateModified": "2024-01-03",
-  "datePublished": "2024-04-23"
+  "dateModified": "2024-04-26",
+  "datePublished": "2024-04-26"
 }
 
   </script><script>
