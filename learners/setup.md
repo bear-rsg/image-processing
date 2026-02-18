@@ -8,14 +8,12 @@ described in this page.
 
 ## Data
 
-The example images used in this lesson are available for University of Birmingham staff on SharePoint.
-Please follow this [link](https://bham.sharepoint.com/sites/AdvancedResearchComputing-Department/_layouts/15/guestaccess.aspx?share=Eh38JNN264JBv0krIXjdgBcB3bIYFedVU2jRR1hjIQM1pw&e=es0Hsf), 
-log on if required, and click "Download".
-Unzip the downloaded file, and save the contents as a folder called `data` somewhere you will easily
-find it again,
+The example images and a description of the Python environment used in this lesson are available on [FigShare](https://figshare.com/).
+To download the data, please visit [the dataset page for this workshop][figshare-data]
+and click the "Download all" button.
+Unzip the downloaded file, and save the contents as a folder called `data` somewhere you will easily find it again,
 e.g. your Desktop or a folder you have created for using in this workshop.
-(The name `data` is optional but recommended, as this is the name we will use to refer to the folder
-throughout the lesson.)
+(The name `data` is optional but recommended, as this is the name we will use to refer to the folder throughout the lesson.)
 
 ## Software
 
